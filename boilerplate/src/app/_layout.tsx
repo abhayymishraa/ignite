@@ -9,6 +9,8 @@ import { ThemeProvider } from "@/theme/context"
 import { customFontsToLoad } from "@/theme/typography"
 import { loadDateFnsLocale } from "@/utils/formatDate"
 
+import { withProduck } from "@tryproduck/react-native";
+
 SplashScreen.preventAutoHideAsync()
 
 if (__DEV__) {
@@ -18,7 +20,7 @@ if (__DEV__) {
   require("@/devtools/ReactotronConfig")
 }
 
-export default function Root() {
+function Root() {
   const [fontsLoaded, fontError] = useFonts(customFontsToLoad)
   const [isI18nInitialized, setIsI18nInitialized] = useState(false)
 
@@ -54,3 +56,5 @@ export default function Root() {
     </SafeAreaProvider>
   )
 }
+
+export default withProduck(Root, { apiKey: "pk_live_0123456789abcdef0123456789abcdef0123456789abcdef" });
